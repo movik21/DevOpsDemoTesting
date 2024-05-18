@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MyNotesController {
 
-    private Map<Integer, MyNotes> mynote = new HashMap<Integer, MyNotes>();
+    // private Map<Integer, MyNotes> mynote = new HashMap<Integer, MyNotes>();
+    // List<String> strings = new ArrayList<>();        // Compliant, the compiler will infer the type argument
+    Map<String,List<Integer>> map = new HashMap<>(); // Compliant, the compiler will infer the type argument
 
     @EventListener(ApplicationReadyEvent.class)
     public void init() {
