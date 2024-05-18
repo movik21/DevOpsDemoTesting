@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class MyNotesControllerTest {
+class MyNotesControllerTest {
     
     @Test
-    public void testCreate() {
+    void testCreate() {
         MyNotesController controller = new MyNotesController();
         var mynote = new MyNotes(1, "t", "d");
         controller.createMyNote(1, mynote);
@@ -18,7 +18,7 @@ public class MyNotesControllerTest {
         assertEquals(1, controller.mynote().size());
     }
     @Test
-    public void testDelete() {
+    void testDelete() {
         MyNotesController controller = new MyNotesController();
         var mynote = new MyNotes(1, "title", "description");
         controller.createMyNote(1, mynote);
@@ -29,14 +29,14 @@ public class MyNotesControllerTest {
     }
 
     @Test
-    public void testInitMethod() {
+    void testInitMethod() {
         MyNotesController controller = new MyNotesController();
         controller.init();
         assertEquals(3, controller.count(), "Should have initialized 3 notes");
     }
 
     @Test
-    public void testGetMyNoteExists() {
+    void testGetMyNoteExists() {
         MyNotesController controller = new MyNotesController();
         controller.init();
         MyNotes note = controller.getMyNote(1);
@@ -45,7 +45,7 @@ public class MyNotesControllerTest {
     }
 
     @Test
-    public void testGetMyNoteDoesNotExist() {
+    void testGetMyNoteDoesNotExist() {
         MyNotesController controller = new MyNotesController();
         controller.init();
         MyNotes note = controller.getMyNote(99);
@@ -53,7 +53,7 @@ public class MyNotesControllerTest {
     }
 
     @Test
-    public void testUpdateMyNote() {
+    void testUpdateMyNote() {
         MyNotesController controller = new MyNotesController();
         var mynote = new MyNotes(1, "Updated Title", "Updated Description");
         controller.createMyNote(1, mynote);
@@ -63,7 +63,7 @@ public class MyNotesControllerTest {
     }
 
     @Test
-    public void testPingEndpoint() {
+    void testPingEndpoint() {
         MyNotesController controller = new MyNotesController();
         String response = controller.ping();
         assertTrue(response.contains("\"status\": \"ok\""), "Ping response should contain status ok");
@@ -71,7 +71,7 @@ public class MyNotesControllerTest {
     }
 
     @Test
-    public void testTestEndpoint() {
+    void testTestEndpoint() {
         MyNotesController controller = new MyNotesController();
         String response = controller.test();
         assertEquals("MyNotes app is up and running!", response, "The response should match the expected message");
